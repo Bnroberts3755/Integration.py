@@ -1,5 +1,10 @@
 # Brandon Roberts
 # Space trivia
+# Lines 6-9, 12-23, 25-31, 44-53, "Building a Multiple Choice Quiz - Mike Dane" on YouTube.
+#      -turning the whole quiz into a looping function and pulling from an array made this a whole lot easier.
+#      -altered code where not code-breaking in order to clean up
+# restart function still not complete
+# added check for user input error within questions to check for invalid input
 
 
 class Question:
@@ -30,27 +35,40 @@ questions = [
 ]
 
 
-def restart():
-    while True:
-        restart = input("Would you like to go again? Enter '1' for Yes or '2' for No: ")
-        if restart == 1:
-            run_quiz(questions)
-        else:
-            print("Thanks for playing!")
-            break
+# added restart = true, restart = false, couldn't test in class
+# def restart():
+#     restart = true
+#     while restart:
+#         restart = input("Would you like to go again? Enter '1' for Yes or '2' for No: ")
+#         if restart == 1:
+#             run_quiz(questions)
+#         else:
+#             print("Thanks for playing!")
+#             restart = false
 
 
 def run_quiz(questions):
     print("Welcome to my simple space science quiz!")
     print("The following is a series of questions meant to stimulate your mind!")
+    print("Make sure you enter the letter at the beginning of each question to ensure credit.")
     print("Good luck, and let us begin!")
     total = 0
     for question in questions:
-        answer = input(question.prompt)
-        if answer == question.answer:
-            total += 1
+        bad_input = True
+        while bad_input:
+            answer = input(question.prompt)
+            if answer == 'a' or answer == 'b' or answer == 'c' or answer == 'd':
+                if answer == question.answer:
+                    total += 1
+                bad_input = False
+            else:
+                bad_input = True
     print("Congratulations, you got " + str(total) + "/" + str(len(questions)) + " correct!")
-    restart()
+    restart = input("Would you like to play again? Enter '1' for Yes, '2' for No: ")
+    if restart != 1:
+        input("Thank you for playing! Enter any character to exit.")
+    else:
+        run_quiz(questions)
 
 
 run_quiz(questions)
