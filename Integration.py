@@ -1,14 +1,17 @@
 """
-This is a quiz program built as a single function.
+This is a quiz program built using functions, classes, and arrays to allow for condensed coding.
 __author__ = Brandon Roberts
 Citations added where necessary
 """
-import sys
+import sys  # Allows the use of system-specific functions like sys.exit to create a proper way to end the quiz
+"""
+Allows the use of system-specific functions like sys.exit to create a proper way to end the quiz
+"""
 
 
 class Question:
     """
-
+A class defining the aspects of the prompt and answer
     """
 
     def __init__(self, prompt, answer):
@@ -25,7 +28,7 @@ def run_quiz(questions):
     """
 Function built to run as a multiple choice quiz without the need for
 multiple lines of code.
-    :param questions:
+    :param questions: parameter pulling the Question array through the function
     """
     start_quiz = True
     while start_quiz:
@@ -67,7 +70,11 @@ multiple lines of code.
 
 
 def main():
-    question_prompts = [
+    """
+The main body of the program which holds the question and question prompt arrays, as well as a user input function
+asking the user if they wish to begin.
+    """
+    question_prompts = [  # An array allowing easier calling of questions through the function
         "What is the branch of science that deals with the physical nature of "
         "stars and other celestial bodies?\n"
         "(a) Space Science\n(b) Cosmology\n(c) Astrophysics\n(d) Physics\n\n",
@@ -86,14 +93,14 @@ def main():
         " Galaxy\n\n"
     ]
 
-    questions = [
-        Question(question_prompts[0], "c"),
+    questions = [  # The questions array passing each question and its' answer through the Question class, allowing /
+        Question(question_prompts[0], "c"),  # quiz function to use the arrays
         Question(question_prompts[1], "a"),
         Question(question_prompts[2], "b"),
         Question(question_prompts[3], "a"),
         Question(question_prompts[4], "d"),
     ]
-    quiz_run = True
+    quiz_run = True  # Function asking for user input if they would like to begin the quiz
     while quiz_run:
         quiz_start = input(
             "Would you like to play a game? Enter 'y' to begin. "
@@ -106,4 +113,3 @@ def main():
 
 
 main()
-
